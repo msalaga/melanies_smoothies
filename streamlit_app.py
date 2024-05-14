@@ -18,11 +18,11 @@ cnx = st.connection("snowflake")
 session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col("FRUIT_NAME"))
 
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+#fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 #st.text(fruityvice_response.json())
 
 insert_btn = st.button("Submit Order")
-fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
+#fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
 options = st.multiselect(
     "Choose smoothies",
