@@ -35,6 +35,8 @@ if(insert_btn):
 
     for option in options:
         concatenated_string += option + ' '
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+ option)
+        fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients) values ('""" + concatenated_string + """')"""
     if concatenated_string:
