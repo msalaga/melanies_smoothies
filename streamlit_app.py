@@ -27,6 +27,8 @@ insert_btn = st.button("Submit Order")
 pd_df = my_dataframe.to_pandas()
 st.dataframe(pd_df)
 
+name_on_order = st.text_input("Name on smoothie:")
+
 options = st.multiselect(
     "Choose smoothies",
     my_dataframe)
@@ -42,7 +44,7 @@ if(insert_btn):
         fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+ search_on)
         fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
-    my_insert_stmt = """ insert into smoothies.public.orders(ingredients) values ('""" + concatenated_string + """')"""
+    my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order) values ('""" + concatenated_string + """','""" + name_on_order + """')"""
     if concatenated_string:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered!', icon="✅")
