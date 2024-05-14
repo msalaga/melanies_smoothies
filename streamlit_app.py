@@ -23,7 +23,9 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col("FRUIT
 #st.text(fruityvice_response.json())
 
 insert_btn = st.button("Submit Order")
-fv_df = st.dataframe(data=my_dataframe, use_container_width=True)
+#fv_df = st.dataframe(data=my_dataframe, use_container_width=True)
+pd_df = my_dataframe.to_pandas()
+st.dataframe(pd_df)
 
 options = st.multiselect(
     "Choose smoothies",
