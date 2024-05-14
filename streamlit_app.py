@@ -19,7 +19,7 @@ session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col("FRUIT_NAME"))
 
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fruityvice_response)
+st.text(fruityvice_response.json())
 
 insert_btn = st.button("Submit Order")
 #st.dataframe(data=my_dataframe, use_container_width=True)
